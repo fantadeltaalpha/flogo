@@ -1,0 +1,29 @@
+{
+  "name": "pulsar-connection",
+  "type": "flogo:connection",
+  "version": "0.1.1",
+  "title": "TIBCO Activespaces 4 Connection",
+  "description": "A simple AS 4 connection",
+  "settings": [
+    {
+      "name": "realmUrl",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "gridName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "clientLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "gridName",
+      "type": "string",
+      "required": true
+    }
+  ]
+}
