@@ -9,14 +9,14 @@
   "input": [
     {
       "name": "source",
-      "type": "object",
+      "type": "string",
       "required": true
     }
   ],
   "output": [
     {
       "name": "output",
-      "type": "object"
+      "type": "string"
     }
   ]
 }

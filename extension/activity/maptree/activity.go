@@ -6,11 +6,11 @@ import (
 )
 
 type Input struct {
-	SourceObject map[string]interface{} `md:"source,required"`
+	SourceObject string `md:"source,required"`
 }
 
 func (r *Input) FromMap(values map[string]interface{}) error {
-	obj, _ := coerce.ToObject(values["source"])
+	obj, _ := coerce.ToString(values["source"])
 	r.SourceObject = obj
 	return nil
 }
@@ -22,11 +22,11 @@ func (r *Input) ToMap() map[string]interface{} {
 }
 
 type Output struct {
-	AnOutput map[string]interface{} `md:"output"`
+	AnOutput string `md:"output"`
 }
 
 func (o *Output) FromMap(values map[string]interface{}) error {
-	obj, _ := coerce.ToObject(values["output"])
+	obj, _ := coerce.ToString(values["output"])
 	o.AnOutput = obj
 	return nil
 }
@@ -42,11 +42,6 @@ func init() {
 }
 
 var activityMd = activity.ToMetadata(&Input{}, &Output{})
-
-//New optional factory method, should be used if one activity instance per configuration is desired
-func New(ctx activity.InitContext) (activity.Activity,error) {
-	return &Activity{},nil
-}
 
 // Activity is an sample Activity that can be used as a base to create a custom activity
 type Activity struct {

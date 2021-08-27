@@ -27,15 +27,15 @@ func TestMap(t *testing.T) {
 		}
 	}()
 
-	iCtx := test.NewActivityInitContext(nil, nil)
-
-	act, err := New(iCtx)
-	assert.Nil(t, err)
+	act := Activity{}
+	//iCtx := test.NewActivityInitContext(nil, nil)
+	/*act, err := New(iCtx)
+	assert.Nil(t, err)*/
 
 	tc := test.NewActivityContext(act.Metadata())
-	tc.SetInput("source", map[string]interface{}{"foo":"bar"})
+	tc.SetInput("source", "Hello")
 
-	_, err = act.Eval(tc)
+	_, err := act.Eval(tc)
 	assert.Nil(t, err)
 
 	fmt.Println(tc.GetOutput("output"))
