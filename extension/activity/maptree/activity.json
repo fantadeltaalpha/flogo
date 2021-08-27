@@ -10,13 +10,8 @@
     {
       "name": "source",
       "type": "string",
-      "required": true
-    }
-  ],
-  "output": [
-    {
-      "name": "output",
-      "type": "string"
+      "value": "",
+      "description": "source string"
     }
   ]
 }

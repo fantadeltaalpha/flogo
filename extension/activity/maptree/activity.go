@@ -6,12 +6,15 @@ import (
 )
 
 type Input struct {
-	SourceObject string `md:"source,required"`
+	SourceObject string `md:"source"`
 }
 
 func (r *Input) FromMap(values map[string]interface{}) error {
-	obj, _ := coerce.ToString(values["source"])
-	r.SourceObject = obj
+	var err error
+	r.SourceObject, err = coerce.ToString(values["source"])
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -21,7 +24,7 @@ func (r *Input) ToMap() map[string]interface{} {
 	}
 }
 
-type Output struct {
+/*type Output struct {
 	AnOutput string `md:"output"`
 }
 
@@ -35,13 +38,13 @@ func (o *Output) ToMap() map[string]interface{} {
 	return map[string]interface{}{
 		"output": o.AnOutput,
 	}
-}
+}*/
 
 func init() {
 	_ = activity.Register(&Activity{}) //activity.Register(&Activity{}, New) to create instances using factory method 'New'
 }
 
-var activityMd = activity.ToMetadata(&Input{}, &Output{})
+var activityMd = activity.ToMetadata(&Input{})
 
 // Activity is an sample Activity that can be used as a base to create a custom activity
 type Activity struct {
@@ -63,11 +66,11 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 
 	ctx.Logger().Debugf("Input: %v", input.SourceObject)
 
-	output := &Output{AnOutput: input.SourceObject}
+	/*output := &Output{AnOutput: input.SourceObject}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
 		return true, err
-	}
+	}*/
 
 	return true, nil
 }

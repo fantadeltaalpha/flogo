@@ -1,7 +1,6 @@
 package maptree
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/project-flogo/core/activity"
@@ -37,6 +36,4 @@ func TestMap(t *testing.T) {
 
 	_, err := act.Eval(tc)
 	assert.Nil(t, err)
-
-	fmt.Println(tc.GetOutput("output"))
 }
