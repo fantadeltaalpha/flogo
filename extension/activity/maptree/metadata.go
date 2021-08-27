@@ -2,9 +2,6 @@ package maptree
 
 import "github.com/project-flogo/core/data/coerce"
 
-type Settings struct {
-}
-
 type Input struct {
 	SourceObject map[string]interface{} `md:"source,required"`
 }
