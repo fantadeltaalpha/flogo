@@ -4,7 +4,12 @@
   "version": "0.1.0",
   "title": "MapTree",
   "description": "MapTree",
-  "homepage": "https://github.com/fantadeltaalpha/flogo/tree/master/extension/activity/maptree",
+  "display": {
+    "category": "OPE",
+    "visible": true,
+    "description": "Mapper activity for OPE5"
+  },
+  "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
   "input": [
     {
       "name": "input",
