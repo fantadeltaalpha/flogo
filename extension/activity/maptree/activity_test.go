@@ -29,7 +29,7 @@ func TestMap(t *testing.T) {
 
 	iCtx := test.NewActivityInitContext(nil, nil)
 
-	act, err := New(iCtx)
+	act, err := NewActivity(iCtx)
 	assert.Nil(t, err)
 
 	tc := test.NewActivityContext(act.Metadata())
