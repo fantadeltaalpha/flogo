@@ -38,14 +38,14 @@ func (o *Output) ToMap() map[string]interface{} {
 }
 
 func init() {
-	_ = activity.Register(&Activity{},NewActivity) //activity.Register(&Activity{}, New) to create instances using factory method 'New'
+	_ = activity.Register(&Activity{},New) //activity.Register(&Activity{}, New) to create instances using factory method 'New'
 }
 
 var activityMd = activity.ToMetadata(&Input{}, &Output{})
 
 //New optional factory method, should be used if one activity instance per configuration is desired
-func NewActivity(ctx activity.InitContext) (activity.Activity, error) {
-	return &Activity{} , nil
+func New(ctx activity.InitContext) (activity.Activity,error) {
+	return &Activity{},nil
 }
 
 // Activity is an sample Activity that can be used as a base to create a custom activity
