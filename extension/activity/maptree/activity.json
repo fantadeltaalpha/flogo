@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "title": "MapTree",
   "description": "MapTree",
-  "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
+  "homepage": "https://github.com/fantadeltaalpha/flogo/tree/master/extension/activity/maptree",
   "input": [
     {
       "name": "source",
