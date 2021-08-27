@@ -2,6 +2,10 @@ package maptree
 
 import "github.com/project-flogo/core/data/coerce"
 
+type Settings struct {
+	ASetting string `md:"aSetting,required"`
+}
+
 type Input struct {
 	AnInput string `md:"input,required"`
 }
