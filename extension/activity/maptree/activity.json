@@ -12,7 +12,7 @@
   "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
   "input": [
     {
-      "name": "input",
+      "name": "source",
       "type": "object",
       "required": true
     }
