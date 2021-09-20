@@ -1,6 +1,9 @@
 package maptree
 
-import "github.com/project-flogo/core/data/coerce"
+import (
+	"github.com/fatih/structs"
+	"github.com/project-flogo/core/data/coerce"
+)
 
 type Settings struct {
 	ASetting string `md:"aSetting,required"`
@@ -33,7 +36,8 @@ func (o *Output) FromMap(values map[string]interface{}) error {
 }
 
 func (o *Output) ToMap() map[string]interface{} {
-	return map[string]interface{}{
+	return structs.Map(o)
+	/*return map[string]interface{}{
 		"anOutput": o.AnOutput,
-	}
+	}*/
 }
