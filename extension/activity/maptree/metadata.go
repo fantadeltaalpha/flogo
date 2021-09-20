@@ -1,7 +1,6 @@
 package maptree
 
 import (
-	"github.com/fatih/structs"
 	"github.com/project-flogo/core/data/coerce"
 )
 
@@ -36,8 +35,8 @@ func (o *Output) FromMap(values map[string]interface{}) error {
 }
 
 func (o *Output) ToMap() map[string]interface{} {
-	return structs.Map(o)
-	/*return map[string]interface{}{
+	//return structs.Map(o)
+	return map[string]interface{}{
 		"anOutput": o.AnOutput,
-	}*/
+	}
 }

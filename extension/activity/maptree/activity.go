@@ -2,6 +2,7 @@ package maptree
 
 import (
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/mapper"
+	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
 	"github.com/project-flogo/core/data/metadata"
 )
@@ -49,7 +50,9 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 
 	ctx.Logger().Debugf("Input: %s", input.AnInput)
 
-	output := &Output{AnOutput: input.AnInput}
+	attr := model.Attribute{Value: "Test",Language: "ID"}
+
+	output := &Output{AnOutput: attr}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
 		return true, err

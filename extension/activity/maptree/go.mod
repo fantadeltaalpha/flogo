@@ -3,7 +3,6 @@ module github.com/fantadeltaalpha/flogo/extension/activity/maptree
 go 1.17
 
 require (
-	github.com/fatih/structs v1.1.0
 	github.com/json-iterator/go v1.1.12
 	github.com/project-flogo/core v1.5.0
 	github.com/stretchr/testify v1.7.0
