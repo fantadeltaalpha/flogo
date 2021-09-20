@@ -2,6 +2,10 @@ package maptree
 
 import "github.com/project-flogo/core/data/coerce"
 
+type Settings struct {
+	ASetting string `md:"aSetting,required"`
+}
+
 type Input struct {
 	SourceObject string `md:"source"`
 }
@@ -21,7 +25,7 @@ func (r *Input) ToMap() map[string]interface{} {
 	}
 }
 
-/*type Output struct {
+type Output struct {
 	AnOutput string `md:"output"`
 }
 
@@ -35,4 +39,4 @@ func (o *Output) ToMap() map[string]interface{} {
 	return map[string]interface{}{
 		"output": o.AnOutput,
 	}
-}*/
+}
