@@ -23,7 +23,7 @@
   "output": [
     {
       "name": "anOutput",
-      "type": "string"
+      "type": "object"
     }
   ]
 }

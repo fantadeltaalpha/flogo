@@ -23,7 +23,7 @@ func (r *Input) ToMap() map[string]interface{} {
 }
 
 type Output struct {
-	AnOutput string `md:"anOutput"`
+	AnOutput interface{} `md:"anOutput"`
 }
 
 func (o *Output) FromMap(values map[string]interface{}) error {
