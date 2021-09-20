@@ -2,24 +2,33 @@ package maptree
 
 import (
 	"github.com/project-flogo/core/activity"
-	"github.com/project-flogo/core/support/log"
+	"github.com/project-flogo/core/data/metadata"
 )
-
-
 
 func init() {
 	_ = activity.Register(&Activity{}) //activity.Register(&Activity{}, New) to create instances using factory method 'New'
 }
 
-var activityLogger = log.ChildLogger(log.RootLogger(), "maptree")
-var activityMd = activity.ToMetadata(&Settings{},&Input{},&Output{})
+var activityMd = activity.ToMetadata(&Settings{}, &Input{}, &Output{})
+
+//New optional factory method, should be used if one activity instance per configuration is desired
+func New(ctx activity.InitContext) (activity.Activity, error) {
+
+	s := &Settings{}
+	err := metadata.MapToStruct(ctx.Settings(), s, true)
+	if err != nil {
+		return nil, err
+	}
+
+	ctx.Logger().Debugf("Setting: %s", s.ASetting)
+
+	act := &Activity{} //add aSetting to instance
+
+	return act, nil
+}
 
 // Activity is an sample Activity that can be used as a base to create a custom activity
 type Activity struct {
-}
-
-func New(ctx activity.InitContext) (activity.Activity, error){
-	return &Activity{},nil
 }
 
 // Metadata returns the activity's metadata
@@ -36,9 +45,9 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 		return true, err
 	}
 
-	activityLogger.Debugf("Input: %v", input.SourceObject)
+	ctx.Logger().Debugf("Input: %s", input.AnInput)
 
-	output := &Output{AnOutput: input.SourceObject}
+	output := &Output{AnOutput: input.AnInput}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
 		return true, err

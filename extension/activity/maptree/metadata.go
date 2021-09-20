@@ -7,36 +7,33 @@ type Settings struct {
 }
 
 type Input struct {
-	SourceObject string `md:"source"`
+	AnInput string `md:"anInput,required"`
 }
 
 func (r *Input) FromMap(values map[string]interface{}) error {
-	var err error
-	r.SourceObject, err = coerce.ToString(values["source"])
-	if err != nil {
-		return err
-	}
+	strVal, _ := coerce.ToString(values["anInput"])
+	r.AnInput = strVal
 	return nil
 }
 
 func (r *Input) ToMap() map[string]interface{} {
 	return map[string]interface{}{
-		"source": r.SourceObject,
+		"anInput": r.AnInput,
 	}
 }
 
 type Output struct {
-	AnOutput string `md:"output"`
+	AnOutput string `md:"anOutput"`
 }
 
 func (o *Output) FromMap(values map[string]interface{}) error {
-	obj, _ := coerce.ToString(values["output"])
-	o.AnOutput = obj
+	strVal, _ := coerce.ToString(values["anOutput"])
+	o.AnOutput = strVal
 	return nil
 }
 
 func (o *Output) ToMap() map[string]interface{} {
 	return map[string]interface{}{
-		"output": o.AnOutput,
+		"anOutput": o.AnOutput,
 	}
 }

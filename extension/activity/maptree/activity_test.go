@@ -8,7 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-
 func TestRegister(t *testing.T) {
 
 	ref := activity.GetRef(&Activity{})
@@ -17,23 +16,20 @@ func TestRegister(t *testing.T) {
 	assert.NotNil(t, act)
 }
 
-func TestMap(t *testing.T) {
+func TestEval(t *testing.T) {
 
-	defer func() {
-		if r := recover(); r != nil {
-			t.Failed()
-			t.Errorf("panic during execution: %v", r)
-		}
-	}()
-
-	act := Activity{}
-	//iCtx := test.NewActivityInitContext(nil, nil)
-	/*act, err := New(iCtx)
-	assert.Nil(t, err)*/
-
+	act := &Activity{}
 	tc := test.NewActivityContext(act.Metadata())
-	tc.SetInput("source", "Hello")
-
-	_, err := act.Eval(tc)
+	input := &Input{AnInput: "test"}
+	err := tc.SetInputObject(input)
 	assert.Nil(t, err)
+
+	done, err := act.Eval(tc)
+	assert.True(t, done)
+	assert.Nil(t, err)
+
+	output := &Output{}
+	err = tc.GetOutputObject(output)
+	assert.Nil(t, err)
+	assert.Equal(t, "test", output.AnOutput)
 }

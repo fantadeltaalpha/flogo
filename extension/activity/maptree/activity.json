@@ -5,7 +5,6 @@
   "title": "MapTree",
   "description": "MapTree",
   "homepage": "https://github.com/fantadeltaalpha/flogo/tree/master/extension/activity/maptree",
-  "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
   "settings": [
     {
       "name": "aSetting",
@@ -15,10 +14,9 @@
   ],
   "input": [
     {
-      "name": "source",
+      "name": "anInput",
       "type": "string",
-      "required": true,
-      "description": "source string"
+      "required": true
     }
   ],
   "output": [
