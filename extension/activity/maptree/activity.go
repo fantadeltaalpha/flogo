@@ -4,25 +4,24 @@ import (
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/mapper"
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
-	"github.com/project-flogo/core/data/metadata"
 )
 
 func init() {
 	_ = activity.Register(&Activity{}) //activity.Register(&Activity{}, New) to create instances using factory method 'New'
 }
 
-var activityMd = activity.ToMetadata(&Settings{}, &Input{}, &Output{})
+var activityMd = activity.ToMetadata(&Input{}, &Output{})
 
 //New optional factory method, should be used if one activity instance per configuration is desired
 func New(ctx activity.InitContext) (activity.Activity, error) {
 
-	s := &Settings{}
+	/*s := &Settings{}
 	err := metadata.MapToStruct(ctx.Settings(), s, true)
 	if err != nil {
 		return nil, err
 	}
 
-	ctx.Logger().Debugf("Setting: %s", s.ASetting)
+	ctx.Logger().Debugf("Setting: %s", s.ASetting)*/
 
 	act := &Activity{ m : mapper.New()} //add aSetting to instance
 
@@ -49,6 +48,7 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	}
 
 	ctx.Logger().Debugf("Input: %s", input.AnInput)
+	ctx.Logger().Infof("segments: %v", input.Segments)
 
 	attr := model.Attribute{Value: "Test",Language: "ID"}
 

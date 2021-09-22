@@ -6,17 +6,15 @@
   "description": "MapTree",
   "homepage": "https://github.com/fantadeltaalpha/flogo/tree/master/extension/activity/maptree",
   "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
-  "settings": [
-    {
-      "name": "aSetting",
-      "type": "string",
-      "required": true
-    }
-  ],
   "input": [
     {
       "name": "anInput",
       "type": "string",
+      "required": true
+    },
+    {
+      "name": "segments",
+      "type": "array",
       "required": true
     }
   ],
