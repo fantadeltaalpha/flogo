@@ -10,7 +10,7 @@ import (
 
 type Input struct {
 	AnInput string `md:"anInput,required"`
-	Segments []interface{} `md:"segments`
+	Segments []interface{} `md:"segments"`
 }
 
 type Segment struct {
