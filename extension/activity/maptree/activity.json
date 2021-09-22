@@ -14,7 +14,7 @@
     },
     {
       "name": "segments",
-      "type": "array",
+      "type": "object",
       "required": true
     }
   ],

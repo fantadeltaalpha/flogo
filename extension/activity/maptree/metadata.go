@@ -10,7 +10,7 @@ import (
 
 type Input struct {
 	AnInput string `md:"anInput,required"`
-	Segments []interface{} `md:"segments"`
+	Segments interface{} `md:"segments"`
 }
 
 type Segment struct {
@@ -20,7 +20,7 @@ type Segment struct {
 
 func (r *Input) FromMap(values map[string]interface{}) error {
 	strVal, _ := coerce.ToString(values["anInput"])
-	segments,_ := coerce.ToArray(values["segments"])
+	segments,_ := values["segments"]
 	r.AnInput = strVal
 	r.Segments = segments
 	return nil

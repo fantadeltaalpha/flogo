@@ -4,6 +4,7 @@ import (
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/mapper"
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
+	"github.com/project-flogo/core/data/coerce"
 )
 
 func init() {
@@ -11,6 +12,7 @@ func init() {
 }
 
 var activityMd = activity.ToMetadata(&Input{}, &Output{})
+var logger = activity.GetLogger("maptree")
 
 //New optional factory method, should be used if one activity instance per configuration is desired
 func New(ctx activity.InitContext) (activity.Activity, error) {
@@ -47,12 +49,12 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 		return true, err
 	}
 
-	ctx.Logger().Debugf("Input: %s", input.AnInput)
-	ctx.Logger().Infof("segments: %v", input.Segments)
+	logger.Debugf("Input: %s", input.AnInput)
+	logger.Infof("segments: %v", input.Segments)
 
 	attr := model.Attribute{Value: "Test",Language: "ID"}
-
-	output := &Output{AnOutput: attr}
+	attrObj,_ := coerce.ToObject(attr)
+	output := &Output{AnOutput: attrObj}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
 		return true, err
