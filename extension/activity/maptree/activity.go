@@ -1,10 +1,12 @@
 package maptree
 
 import (
+	"encoding/json"
+
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/mapper"
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
-	"github.com/project-flogo/core/data/coerce"
+	"github.com/project-flogo/core/support/log"
 )
 
 func init() {
@@ -12,7 +14,8 @@ func init() {
 }
 
 var activityMd = activity.ToMetadata(&Input{}, &Output{})
-var logger = activity.GetLogger("maptree")
+
+var logger = log.ChildLogger(log.RootLogger(), "maptree")
 
 //New optional factory method, should be used if one activity instance per configuration is desired
 func New(ctx activity.InitContext) (activity.Activity, error) {
@@ -46,18 +49,24 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	input := &Input{}
 	err = ctx.GetInputObject(input)
 	if err != nil {
-		return true, err
+		return false, err
 	}
 
-	logger.Debugf("Input: %s", input.AnInput)
-	logger.Infof("segments: %v", input.Segments)
+	logger.Infof("Input.TrxID: %s", input.TransactionID)
+	logger.Infof("Input.Segments: %v", input.Segments)
 
 	attr := model.Attribute{Value: "Test",Language: "ID"}
-	attrObj,_ := coerce.ToObject(attr)
-	output := &Output{AnOutput: attrObj}
+	data,err := json.Marshal(attr)
+	if err != nil {
+		return false, err
+	}
+	products:= make(map[string]interface{})
+	err = json.Unmarshal(data, &products)
+	
+	output := &Output{Products: products}
 	err = ctx.SetOutputObject(output)
 	if err != nil {
-		return true, err
+		return false, err
 	}
 
 	return true, nil

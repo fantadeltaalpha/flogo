@@ -8,19 +8,17 @@
   "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
   "input": [
     {
-      "name": "anInput",
-      "type": "string",
-      "required": true
+      "name": "businessTransactionID",
+      "type": "string"
     },
     {
       "name": "segments",
-      "type": "object",
-      "required": true
+      "type": "object"
     }
   ],
   "output": [
     {
-      "name": "anOutput",
+      "name": "products",
       "type": "object"
     }
   ]
