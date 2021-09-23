@@ -6,6 +6,7 @@
   "description": "MapTree",
   "homepage": "https://github.com/fantadeltaalpha/flogo/tree/master/extension/activity/maptree",
   "ref": "github.com/fantadeltaalpha/flogo/extension/activity/maptree",
+  "settings": [],
   "input": [
     {
       "name": "businessTransactionID",

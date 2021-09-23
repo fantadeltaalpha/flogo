@@ -4,9 +4,8 @@ import (
 	"github.com/project-flogo/core/data/coerce"
 )
 
-/*type Settings struct {
-	ASetting string `md:"aSetting,required"`
-}*/
+type Settings struct {
+}
 
 type Input struct {
 	TransactionID string `md:"businessTransactionID"`
