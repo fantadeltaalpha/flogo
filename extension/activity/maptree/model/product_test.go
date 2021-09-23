@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
+
 	jsoniter "github.com/json-iterator/go"
 )
 
