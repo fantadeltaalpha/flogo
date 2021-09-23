@@ -3,7 +3,6 @@ package maptree
 import (
 	"encoding/json"
 
-	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/mapper"
 	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
 	"github.com/project-flogo/core/support/log"
@@ -28,14 +27,14 @@ func New(ctx activity.InitContext) (activity.Activity, error) {
 
 	ctx.Logger().Debugf("Setting: %s", s.ASetting)*/
 
-	act := &Activity{ m : mapper.New()} //add aSetting to instance
+	act := &Activity{} //add aSetting to instance
 
 	return act, nil
 }
 
 // Activity is an sample Activity that can be used as a base to create a custom activity
 type Activity struct {
-	m *mapper.Mapper
+	//m *mapper.Mapper
 }
 
 // Metadata returns the activity's metadata
