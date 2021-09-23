@@ -3,7 +3,6 @@ package maptree
 import (
 	"encoding/json"
 
-	"github.com/fantadeltaalpha/flogo/extension/activity/maptree/model"
 	"github.com/project-flogo/core/activity"
 	"github.com/project-flogo/core/support/log"
 )
@@ -54,8 +53,8 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	logger.Infof("Input.TrxID: %s", input.TransactionID)
 	logger.Infof("Input.Segments: %v", input.Segments)
 
-	attr := model.Attribute{Value: "Test",Language: "ID"}
-	data,err := json.Marshal(attr)
+	product := Product{ID: "002992",Type: "PO"} 
+	data,err := json.Marshal(product)
 	if err != nil {
 		return false, err
 	}
@@ -69,4 +68,9 @@ func (a *Activity) Eval(ctx activity.Context) (done bool, err error) {
 	}
 
 	return true, nil
+}
+
+type Product struct{
+	ID string `json:"id"`
+	Type string `json:"type"`
 }

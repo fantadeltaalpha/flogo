@@ -20,7 +20,7 @@ func TestEval(t *testing.T) {
 
 	act := &Activity{}
 	tc := test.NewActivityContext(act.Metadata())
-	input := &Input{TransactionID: "test"}
+	input := &Input{TransactionID: "abc123", Segments: map[string]interface{}{"name":"JAKARTA","type":"SUB_LOCATION"}}
 	err := tc.SetInputObject(input)
 	assert.Nil(t, err)
 
@@ -31,5 +31,5 @@ func TestEval(t *testing.T) {
 	output := &Output{}
 	err = tc.GetOutputObject(output)
 	assert.Nil(t, err)
-	assert.Equal(t, "test", output.ToMap())
+	assert.Equal(t, "abc123", output.ToMap())
 }
